@@ -7,21 +7,154 @@ generator client {
   provider = "prisma-client-js"
 }
 
-enum UserRole {
-  SUPER_ADMIN
+enum Role {
   ADMIN
   EDITOR
-  CREATOR
-  USER
+  VIEWER
+}
+
+enum Plan {
+  FREE
+  PRO
+  TEAM
+}
+
+enum DocumentStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum AgentType {
+  DRAFT
+  REWRITE
+  CHAT
+  REVIEW_SUMMARY
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELLED
+  EXPIRED
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String?
-  role      UserRole @default(USER)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String        @id @default(uuid())
+  name         String
+  email        String        @unique
+  password     String
+  role         Role          @default(VIEWER)
+  avatar       String?
+  plan         Plan          @default(FREE)
+  isActive     Boolean       @default(true)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  
+  // Relations
+  templates    Template[]    @relation("CreatedBy")
+  documents    Document[]
+  aiLogs       AiLog[]
+  reviews      Review[]
+  subscription Subscription?
 
   @@map("users")
+}
+
+model Template {
+  id           String        @id @default(uuid())
+  title        String
+  slug         String        @unique
+  category     String
+  description  String
+  prompt       String        @db.Text
+  sampleOutput String?       @db.Text
+  thumbnail    String?
+  rating       Float         @default(0.0)
+  usageCount   Int           @default(0)
+  isPublished  Boolean       @default(false)
+  createdById  String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  // Relations
+  createdBy    User          @relation("CreatedBy", fields: [createdById], references: [id], onDelete: Cascade)
+  documents    Document[]
+  reviews      Review[]
+
+  @@index([createdById])
+  @@map("templates")
+}
+
+model Document {
+  id         String         @id @default(uuid())
+  title      String
+  content    String         @db.Text
+  status     DocumentStatus @default(DRAFT)
+  userId     String
+  templateId String?
+  tokensUsed Int            @default(0)
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+
+  // Relations
+  user       User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  template   Template?      @relation(fields: [templateId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([templateId])
+  @@map("documents")
+}
+
+model AiLog {
+  id         String    @id @default(uuid())
+  userId     String
+  agentType  AgentType
+  prompt     String    @db.Text
+  response   String    @db.Text
+  tokensUsed Int       @default(0)
+  createdAt  DateTime  @default(now())
+
+  // Relations
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("ai_logs")
+}
+
+model Review {
+  id         String       @id @default(uuid())
+  userId     String
+  templateId String
+  rating     Int
+  comment    String
+  status     ReviewStatus @default(PENDING)
+  createdAt  DateTime     @default(now())
+
+  // Relations
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  template   Template     @relation(fields: [templateId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([templateId])
+  @@map("reviews")
+}
+
+model Subscription {
+  id          String             @id @default(uuid())
+  userId      String             @unique
+  plan        Plan
+  status      SubscriptionStatus @default(ACTIVE)
+  renewalDate DateTime
+  createdAt   DateTime           @default(now())
+
+  // Relations
+  user        User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("subscriptions")
 }
