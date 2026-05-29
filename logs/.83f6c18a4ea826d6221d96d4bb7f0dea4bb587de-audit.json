@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "C:\\projects\\Agentic\\WriteFlowAI\\logs\\.83f6c18a4ea826d6221d96d4bb7f0dea4bb587de-audit.json",
+    "files": [
+        {
+            "date": 1780041285190,
+            "name": "C:\\projects\\Agentic\\WriteFlowAI\\logs\\error-2026-05-29.log",
+            "hash": "fbe7c28ff14feb084d485ea49e859d41500e4394e66b6d2f3638124c6bfd40bb"
+        }
+    ],
+    "hashType": "sha256"
+}
