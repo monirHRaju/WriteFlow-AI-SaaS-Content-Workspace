@@ -1,5 +1,5 @@
 import express from 'express';
-import { AuthRoutes } from '../modules/auth/auth.route';
+import { AuthRoutes } from '../modules/auth/auth.routes';
 import { UserRoutes } from '../modules/users/users.route';
 import { TemplateRoutes } from '../modules/templates/templates.route';
 import { AiRoutes } from '../modules/ai/ai.route';

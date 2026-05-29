@@ -21,6 +21,9 @@ const envSchema = z.object({
   JWT_REFRESH_SECRET: z.string({
     required_error: 'JWT_REFRESH_SECRET is required',
   }),
+  CORS_ORIGIN: z.string({
+    required_error: 'CORS_ORIGIN is required',
+  }),
 });
 
 // Run safety parse
@@ -37,6 +40,7 @@ const config = {
   env: parsedEnv.data.NODE_ENV,
   databaseUrl: parsedEnv.data.DATABASE_URL,
   redisUrl: parsedEnv.data.REDIS_URL,
+  corsOrigin: parsedEnv.data.CORS_ORIGIN.split(',').map((origin) => origin.trim()),
   jwt: {
     secret: parsedEnv.data.JWT_SECRET,
     refreshSecret: parsedEnv.data.JWT_REFRESH_SECRET,

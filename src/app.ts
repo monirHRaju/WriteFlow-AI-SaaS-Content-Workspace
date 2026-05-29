@@ -2,6 +2,8 @@ import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import cookieParser from 'cookie-parser';
+import config from './app/config';
 import router from './app/routes';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
 import notFound from './app/middlewares/notFound';
@@ -14,7 +16,7 @@ app.use(helmet());
 // 2. Cross-Origin Resource Sharing
 app.use(
   cors({
-    origin: '*', // In actual staging/production, configure specific domains
+    origin: config.corsOrigin,
     credentials: true,
   })
 );
@@ -41,6 +43,7 @@ app.use(limiter);
 // 4. Request Parsers
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // 5. Root route for API health-checks
 app.get('/', (_req: Request, res: Response) => {
