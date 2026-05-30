@@ -1,7 +1,7 @@
 import express from 'express';
 import { AuthRoutes } from '../modules/auth/auth.routes';
 import { UserRoutes } from '../modules/users/users.route';
-import { TemplateRoutes } from '../modules/templates/templates.route';
+import { TemplateRoutes } from '../modules/templates/templates.routes';
 import { AiRoutes } from '../modules/ai/ai.route';
 import { DocumentRoutes } from '../modules/documents/documents.route';
 import { ReviewRoutes } from '../modules/reviews/reviews.route';
