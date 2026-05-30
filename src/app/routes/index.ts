@@ -1,41 +1,41 @@
-import express from 'express';
-import { AuthRoutes } from '../modules/auth/auth.routes';
-import { UserRoutes } from '../modules/users/users.route';
-import { TemplateRoutes } from '../modules/templates/templates.routes';
-import { AiRoutes } from '../modules/ai/ai.route';
-import { DocumentRoutes } from '../modules/documents/documents.route';
-import { ReviewRoutes } from '../modules/reviews/reviews.route';
-import { AnalyticsRoutes } from '../modules/analytics/analytics.route';
+import express from "express";
+import { AuthRoutes } from "../modules/auth/auth.routes";
+import { UserRoutes } from "../modules/users/users.route";
+import { TemplateRoutes } from "../modules/templates/templates.routes";
+import { AiRoutes } from "../modules/ai/ai.routes";
+import { DocumentRoutes } from "../modules/documents/documents.route";
+import { ReviewRoutes } from "../modules/reviews/reviews.route";
+import { AnalyticsRoutes } from "../modules/analytics/analytics.route";
 
 const router = express.Router();
 
 const moduleRoutes = [
   {
-    path: '/auth',
+    path: "/auth",
     route: AuthRoutes,
   },
   {
-    path: '/users',
+    path: "/users",
     route: UserRoutes,
   },
   {
-    path: '/templates',
+    path: "/templates",
     route: TemplateRoutes,
   },
   {
-    path: '/ai',
+    path: "/ai",
     route: AiRoutes,
   },
   {
-    path: '/documents',
+    path: "/documents",
     route: DocumentRoutes,
   },
   {
-    path: '/reviews',
+    path: "/reviews",
     route: ReviewRoutes,
   },
   {
-    path: '/analytics',
+    path: "/analytics",
     route: AnalyticsRoutes,
   },
 ];

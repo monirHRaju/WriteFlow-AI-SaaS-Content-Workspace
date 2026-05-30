@@ -24,6 +24,7 @@ const envSchema = z.object({
   CORS_ORIGIN: z.string({
     required_error: 'CORS_ORIGIN is required',
   }),
+  OPENAI_API_KEY: z.string().default('change_me_openai_api_key'),
 });
 
 // Run safety parse
@@ -45,6 +46,7 @@ const config = {
     secret: parsedEnv.data.JWT_SECRET,
     refreshSecret: parsedEnv.data.JWT_REFRESH_SECRET,
   },
+  openaiApiKey: parsedEnv.data.OPENAI_API_KEY,
 };
 
 export default config;
