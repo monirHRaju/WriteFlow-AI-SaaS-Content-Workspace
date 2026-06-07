@@ -3,7 +3,7 @@ import { AuthRoutes } from "../modules/auth/auth.routes";
 import { UserRoutes } from "../modules/users/users.route";
 import { TemplateRoutes } from "../modules/templates/templates.routes";
 import { AiRoutes } from "../modules/ai/ai.routes";
-import { DocumentRoutes } from "../modules/documents/documents.route";
+import { DocumentRoutes } from "../modules/documents/documents.routes";
 import { ReviewRoutes } from "../modules/reviews/reviews.route";
 import { AnalyticsRoutes } from "../modules/analytics/analytics.route";
 

@@ -1,0 +1,166 @@
+2026-05-29 22:08:20 [error]: [GlobalError] 400 - Validation Error - Route: POST /api/v1/auth/register - IP: ::1 - Stack: ZodError: [
+  {
+    "code": "too_small",
+    "minimum": 2,
+    "type": "string",
+    "inclusive": true,
+    "exact": false,
+    "message": "Name must be at least 2 characters long.",
+    "path": [
+      "body",
+      "name"
+    ]
+  },
+  {
+    "validation": "email",
+    "code": "invalid_string",
+    "message": "Invalid email address format.",
+    "path": [
+      "body",
+      "email"
+    ]
+  },
+  {
+    "code": "too_small",
+    "minimum": 6,
+    "type": "string",
+    "inclusive": true,
+    "exact": false,
+    "message": "Password must be at least 6 characters long.",
+    "path": [
+      "body",
+      "password"
+    ]
+  }
+]
+    at get error (C:\projects\Agentic\WriteFlowAI\backend\node_modules\zod\v3\types.cjs:45:31)
+    at ZodObject.parseAsync (C:\projects\Agentic\WriteFlowAI\backend\node_modules\zod\v3\types.cjs:183:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (C:\projects\Agentic\WriteFlowAI\backend\src\app\middlewares\validateRequest.ts:7:7)
+2026-05-29 22:08:20 [error]: [GlobalError] 500 - 
+Invalid `prisma.user.findUnique()` invocation in
+C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.repository.ts:12:24
+
+   9 
+  10 // Retrieve user by unique email
+  11 static async findByEmail(email: string): Promise<User | null> {
+→ 12   return prisma.user.findUnique(
+Authentication failed against database server at `localhost`, the provided database credentials for `postgres` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`. - Route: POST /api/v1/auth/register - IP: ::1 - Stack: PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.repository.ts:12:24
+
+   9 
+  10 // Retrieve user by unique email
+  11 static async findByEmail(email: string): Promise<User | null> {
+→ 12   return prisma.user.findUnique(
+Authentication failed against database server at `localhost`, the provided database credentials for `postgres` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`.
+    at $n.handleRequestError (C:\projects\Agentic\WriteFlowAI\backend\node_modules\@prisma\client\runtime\library.js:121:7615)
+    at $n.handleAndLogRequestError (C:\projects\Agentic\WriteFlowAI\backend\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\projects\Agentic\WriteFlowAI\backend\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\projects\Agentic\WriteFlowAI\backend\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async Function.register (C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.service.ts:38:26)
+    at async register (C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.controller.ts:32:22)
+2026-05-29 22:36:41 [error]: [GlobalError] 500 - 
+Invalid `prisma.user.findUnique()` invocation in
+C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.repository.ts:12:24
+
+   9 
+  10 // Retrieve user by unique email
+  11 static async findByEmail(email: string): Promise<User | null> {
+→ 12   return prisma.user.findUnique(
+Authentication failed against database server at `localhost`, the provided database credentials for `postgres` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`. - Route: POST /api/v1/auth/register - IP: ::1 - Stack: PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.repository.ts:12:24
+
+   9 
+  10 // Retrieve user by unique email
+  11 static async findByEmail(email: string): Promise<User | null> {
+→ 12   return prisma.user.findUnique(
+Authentication failed against database server at `localhost`, the provided database credentials for `postgres` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`.
+    at $n.handleRequestError (C:\projects\Agentic\WriteFlowAI\backend\node_modules\@prisma\client\runtime\library.js:121:7615)
+    at $n.handleAndLogRequestError (C:\projects\Agentic\WriteFlowAI\backend\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\projects\Agentic\WriteFlowAI\backend\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\projects\Agentic\WriteFlowAI\backend\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async Function.register (C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.service.ts:38:26)
+    at async register (C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.controller.ts:32:22)
+2026-05-29 22:36:41 [error]: [GlobalError] 401 - You are not authorized to access this resource. - Route: GET /api/v1/auth/me - IP: ::1 - Stack: Error: You are not authorized to access this resource.
+    at requireAuth (C:\projects\Agentic\WriteFlowAI\backend\src\app\middlewares\auth.ts:26:13)
+    at Layer.handle [as handle_request] (C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\index.js:47:12)
+2026-05-29 22:36:41 [error]: [GlobalError] 401 - No refresh token was provided. - Route: POST /api/v1/auth/refresh - IP: ::1 - Stack: Error: No refresh token was provided.
+    at Function.refresh (C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.service.ts:97:13)
+    at refresh (C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.controller.ts:77:80)
+    at Layer.handle [as handle_request] (C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\projects\Agentic\WriteFlowAI\backend\node_modules\express\lib\router\index.js:175:3)
+2026-05-29 22:36:41 [error]: [GlobalError] 400 - Validation Error - Route: POST /api/v1/auth/login - IP: ::1 - Stack: ZodError: [
+  {
+    "validation": "email",
+    "code": "invalid_string",
+    "message": "Invalid email address format.",
+    "path": [
+      "body",
+      "email"
+    ]
+  }
+]
+    at get error (C:\projects\Agentic\WriteFlowAI\backend\node_modules\zod\v3\types.cjs:45:31)
+    at ZodObject.parseAsync (C:\projects\Agentic\WriteFlowAI\backend\node_modules\zod\v3\types.cjs:183:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (C:\projects\Agentic\WriteFlowAI\backend\src\app\middlewares\validateRequest.ts:7:7)
+2026-05-29 22:41:22 [error]: [GlobalError] 500 - 
+Invalid `prisma.user.findUnique()` invocation in
+C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.repository.ts:12:24
+
+   9 
+  10 // Retrieve user by unique email
+  11 static async findByEmail(email: string): Promise<User | null> {
+→ 12   return prisma.user.findUnique(
+Authentication failed against database server at `localhost`, the provided database credentials for `postgres` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`. - Route: POST /api/v1/auth/register - IP: ::1 - Stack: PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.repository.ts:12:24
+
+   9 
+  10 // Retrieve user by unique email
+  11 static async findByEmail(email: string): Promise<User | null> {
+→ 12   return prisma.user.findUnique(
+Authentication failed against database server at `localhost`, the provided database credentials for `postgres` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`.
+    at $n.handleRequestError (C:\projects\Agentic\WriteFlowAI\backend\node_modules\@prisma\client\runtime\library.js:121:7615)
+    at $n.handleAndLogRequestError (C:\projects\Agentic\WriteFlowAI\backend\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\projects\Agentic\WriteFlowAI\backend\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\projects\Agentic\WriteFlowAI\backend\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async Function.register (C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.service.ts:38:26)
+    at async register (C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.controller.ts:32:22)
+2026-05-29 22:52:15 [error]: [GlobalError] 401 - Invalid credentials provided. - Route: POST /api/v1/auth/login - IP: ::1 - Stack: Error: Invalid credentials provided.
+    at Function.login (C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.service.ts:74:13)
+    at async login (C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.controller.ts:54:22)
+2026-05-29 22:52:23 [error]: [GlobalError] 401 - Invalid credentials provided. - Route: POST /api/v1/auth/login - IP: ::1 - Stack: Error: Invalid credentials provided.
+    at Function.login (C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.service.ts:74:13)
+    at async login (C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.controller.ts:54:22)
+2026-05-29 22:52:26 [error]: [GlobalError] 401 - Invalid credentials provided. - Route: POST /api/v1/auth/login - IP: ::1 - Stack: Error: Invalid credentials provided.
+    at Function.login (C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.service.ts:74:13)
+    at async login (C:\projects\Agentic\WriteFlowAI\backend\src\app\modules\auth\auth.controller.ts:54:22)
