@@ -13,6 +13,15 @@ const createDocumentValidationSchema = z.object({
   }),
 });
 
+const listDocumentsValidationSchema = z.object({
+  query: z.object({
+    search: z.string().optional(),
+    status: z.enum(['DRAFT', 'PUBLISHED', 'ARCHIVED']).optional(),
+    page: z.coerce.number().int().min(1).optional().default(1),
+    limit: z.coerce.number().int().min(1).max(50).optional().default(10),
+  }),
+});
+
 const updateDocumentValidationSchema = z.object({
   params: z.object({
     id: z.string().uuid('Invalid document id format.'),
@@ -25,10 +34,13 @@ const updateDocumentValidationSchema = z.object({
         .max(200, 'Title cannot exceed 200 characters.')
         .optional(),
       content: z.string().optional(),
+      status: z.enum(['DRAFT', 'PUBLISHED', 'ARCHIVED']).optional(),
     })
-    .refine((data) => data.title !== undefined || data.content !== undefined, {
-      message: 'At least one of title or content must be provided.',
-    }),
+    .refine(
+      (data) =>
+        data.title !== undefined || data.content !== undefined || data.status !== undefined,
+      { message: 'At least one of title, content, or status must be provided.' }
+    ),
 });
 
 const documentIdParamValidationSchema = z.object({
@@ -39,6 +51,7 @@ const documentIdParamValidationSchema = z.object({
 
 export const DocumentValidation = {
   createDocumentValidationSchema,
+  listDocumentsValidationSchema,
   updateDocumentValidationSchema,
   documentIdParamValidationSchema,
 };

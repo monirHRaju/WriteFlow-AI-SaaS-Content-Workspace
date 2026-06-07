@@ -6,6 +6,13 @@ import { DocumentValidation } from './documents.validation';
 
 const router = express.Router();
 
+router.get(
+  '/',
+  requireAuth,
+  validateRequest(DocumentValidation.listDocumentsValidationSchema),
+  DocumentsController.getUserDocuments
+);
+
 router.post(
   '/',
   requireAuth,
@@ -25,6 +32,13 @@ router.patch(
   requireAuth,
   validateRequest(DocumentValidation.updateDocumentValidationSchema),
   DocumentsController.updateDocument
+);
+
+router.delete(
+  '/:id',
+  requireAuth,
+  validateRequest(DocumentValidation.documentIdParamValidationSchema),
+  DocumentsController.archiveDocument
 );
 
 export const DocumentRoutes = router;
