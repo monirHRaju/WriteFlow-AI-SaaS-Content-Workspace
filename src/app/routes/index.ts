@@ -6,6 +6,7 @@ import { AiRoutes } from "../modules/ai/ai.routes";
 import { DocumentRoutes } from "../modules/documents/documents.routes";
 import { ReviewRoutes } from "../modules/reviews/reviews.route";
 import { AnalyticsRoutes } from "../modules/analytics/analytics.route";
+import { AdminRoutes } from "../modules/admin/admin.routes";
 
 const router = express.Router();
 
@@ -37,6 +38,10 @@ const moduleRoutes = [
   {
     path: "/analytics",
     route: AnalyticsRoutes,
+  },
+  {
+    path: "/admin",
+    route: AdminRoutes,
   },
 ];
 
